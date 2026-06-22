@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout/clone
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 #below step is used to download linting tool
       - name: install linter
         run: pip install ruff
