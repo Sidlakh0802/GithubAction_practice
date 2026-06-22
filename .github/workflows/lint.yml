@@ -1,0 +1,19 @@
+
+# when some one changes the code of python code the linter will check if the syntax, formating is correct
+
+name: Auto Linter
+
+on:
+  push:
+   path: "*.py"
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout/clone
+        uses: actions/checkout@v4
+#below step is used to download linting tool
+      - name: install linter
+        run: pip install ruff
+#this step will automatically clone to the runner which is done uses comand from github actions directory from google
