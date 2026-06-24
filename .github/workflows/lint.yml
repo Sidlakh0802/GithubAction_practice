@@ -13,6 +13,11 @@ jobs:
     steps:
       - name: Checkout/clone
         uses: actions/checkout@v5
+      #this will install Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
 #below step is used to download linting tool
       - name: install linter
         run: pip install ruff
