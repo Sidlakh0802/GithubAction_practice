@@ -13,7 +13,7 @@
 
 ---
 
-## 📄 The Workflow YAML (`.github/workflows/hello.yml`)
+## 📄 The Workflow YAML (`.github/workflows/greet.yml`)
 
 Here is the final version of my very first GitHub Actions workflow. It checks out the code, prints a greeting, and outputs dynamic information about the runner environment using GitHub's built-in variables.
 
@@ -72,8 +72,8 @@ Writing pipelines is just learning the vocabulary. Here is what each key in the 
 
 ## 🚨 Breaking it on Purpose (The Red 'X')
 
-To understand how CI/CD protects our code, I intentionally added a step that runs `exit 1` (a forced failure command) to see what happens.
-
+To understand how CI/CD protects our code, I intentionally changed a command and wrote wrong one to see what happens.
+<img width="3420" height="2214" alt="image" src="https://github.com/user-attachments/assets/1f436db0-b4d2-46c7-951f-2bf63cba9a82" />
 **What does a failed pipeline look like?**
 
 * The beautiful green checkmark turns into an angry **Red X**.
