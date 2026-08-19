@@ -1,12 +1,10 @@
 # GitHub Actions Practice
 
-## Concepts
-
-## Workflows
-
-To create Github action you need a folder called .github/workflows
+# To create Github action you need a folder called .github/workflows
 
 # This REPO will have the full CICD Practice for 90daysofdevops Repo (day40-49). Please follow this Readme file for your refrence
+
+
 
 
 # 🟢 Day 40 – Your First GitHub Actions Workflow
