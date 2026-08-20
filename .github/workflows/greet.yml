@@ -23,7 +23,7 @@ jobs:
         run: echo "This run was triggered by branch -> ${{ github.ref_name }}"
         
       - name: Step 5 - List Repository Files
-        run: l s -la
+        run: ls -la
         
       - name: Step 6 - Print Runner Operating System
         run: echo "This runner is running on -> ${{ runner.os }}"
