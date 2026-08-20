@@ -1,0 +1,14 @@
+name: PR Gatekeeper
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print PR info
+        run: echo "PR check running for branch -> ${{ github.head_ref }}"
+
