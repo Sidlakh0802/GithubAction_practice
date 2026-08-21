@@ -1,0 +1,20 @@
+name: Self-Hosted Runner Test
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  run-on-my-machine:
+    # Notice the label added here for Task 5!
+    runs-on: [self-hosted, my-linux-runner]
+    
+    steps:
+      - name: Prove it is my physical machine
+        run: |
+          hostname
+          pwd
+          
+      - name: Create a physical file
+        run: touch i-was-created-by-github-actions.txt
+
