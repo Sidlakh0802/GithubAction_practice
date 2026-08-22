@@ -1,17 +1,17 @@
-name: Manual Deployment
+# name: Manual Deployment
 
-on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Target Environment (staging/production)'
-        required: true
-        default: 'staging'
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       environment:
+#         description: 'Target Environment (staging/production)'
+#         required: true
+#         default: 'staging'
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Announce Deployment Target
-        run: echo "Deploying the application to the ${{ github.event.inputs.environment }} environment!"
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Announce Deployment Target
+#         run: echo "Deploying the application to the ${{ github.event.inputs.environment }} environment!"
 
