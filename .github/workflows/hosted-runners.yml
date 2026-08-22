@@ -1,39 +1,39 @@
-name: GitHub Hosted Runners Explorer
+# name: GitHub Hosted Runners Explorer
 
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
-jobs:
-  explore-ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print OS, Hostname, User
-        run: |
-          echo "OS: $RUNNER_OS"
-          hostname
-          whoami
-      - name: Check Pre-installed Tools (Task 2)
-        run: |
-          docker --version
-          python --version
-          node --version
-          git --version
+# jobs:
+#   explore-ubuntu:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print OS, Hostname, User
+#         run: |
+#           echo "OS: $RUNNER_OS"
+#           hostname
+#           whoami
+#       - name: Check Pre-installed Tools (Task 2)
+#         run: |
+#           docker --version
+#           python --version
+#           node --version
+#           git --version
 
-  explore-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Print OS, Hostname, User
-        run: |
-          echo "OS: $env:RUNNER_OS"
-          hostname
-          whoami
+#   explore-windows:
+#     runs-on: windows-latest
+#     steps:
+#       - name: Print OS, Hostname, User
+#         run: |
+#           echo "OS: $env:RUNNER_OS"
+#           hostname
+#           whoami
 
-  explore-macos:
-    runs-on: macos-latest
-    steps:
-      - name: Print OS, Hostname, User
-        run: |
-          echo "OS: $RUNNER_OS"
-          hostname
-          whoami
+#   explore-macos:
+#     runs-on: macos-latest
+#     steps:
+#       - name: Print OS, Hostname, User
+#         run: |
+#           echo "OS: $RUNNER_OS"
+#           hostname
+#           whoami
