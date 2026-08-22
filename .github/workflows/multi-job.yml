@@ -1,21 +1,21 @@
-name: Multi-Job Chain
-on: [push]
+# name: Multi-Job Chain
+# on: [push]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Building the app"
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Building the app"
   
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Running tests"
+#   test:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Running tests"
       
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deploying"
+#   deploy:
+#     needs: test
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Deploying"
 
