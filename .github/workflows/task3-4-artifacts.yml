@@ -1,4 +1,4 @@
-name: Task 3 & 4 - Artifacts
+name: Task 3 & 4 - Artifact
 on: [push]
 jobs:
   job1-create-artifact:
