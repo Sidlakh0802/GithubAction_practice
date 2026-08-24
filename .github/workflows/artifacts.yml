@@ -1,8 +1,6 @@
-<<<<<<< HEAD:.github/workflows/task3-4-artifacts.yml
-name: Task 3 & 4 - Artifact
-=======
+
 name: Artifacts Workflow
->>>>>>> 8e99e11 (task3-4 day 44):.github/workflows/artifacts.yml
+
 on: [push]
 
 jobs:
