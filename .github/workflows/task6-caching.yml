@@ -7,12 +7,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
-      - name: Cache Python pip dependencies
+      - name: Cache the entire Python environment
+        id: cache-env # We gave this step an ID so we can check it later
         uses: actions/cache@v4
         with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-test
+          path: venv # We are caching the whole virtual environment folder
+          key: ${{ runner.os }}-venv-tensorflow
           
-      - name: Install a huge package (TensorFlow)
-        run: pip install tensorflow
-
+      - name: Create venv and Install (Only if no cache exists!)
+        if: steps.cache-env.outputs.cache-hit != 'true'
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install tensorflow
+          
+      - name: Run a test to prove it works
+        run: |
+          source venv/bin/activate
+          python -c "print('TensorFlow environment is ready!')"
