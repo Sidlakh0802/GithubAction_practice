@@ -1,11 +1,17 @@
+<<<<<<< HEAD:.github/workflows/task3-4-artifacts.yml
 name: Task 3 & 4 - Artifact
+=======
+name: Artifacts Workflow
+>>>>>>> 8e99e11 (task3-4 day 44):.github/workflows/artifacts.yml
 on: [push]
+
 jobs:
   job1-create-artifact:
     runs-on: ubuntu-latest
     steps:
       - name: Generate a test report file
-        run: echo "Test results: 50/50 tests passed successfully." > report.txt
+        run: echo "Test results passed successfully." > report.txt
+        
       - name: Upload the file to GitHub Storage
         uses: actions/upload-artifact@v4
         with:
@@ -20,5 +26,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: my-test-report
+          
       - name: Read the contents
         run: cat report.txt
