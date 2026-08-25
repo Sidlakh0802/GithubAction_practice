@@ -452,5 +452,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(\`Server is running and listening on port \${PORT}\`);
+  console.log(`Server is running and listening on port ${PORT}`);
 });
