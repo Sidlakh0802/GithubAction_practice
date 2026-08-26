@@ -1,0 +1,27 @@
+name: Reusable Build Template
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+        default: "staging"
+    secrets:
+      docker_token:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Print Build Details
+        run: |
+          echo "Building ${{ inputs.app_name }} for${{ inputs.environment }}"
+          echo "Docker token is set: true"
+
