@@ -1,0 +1,29 @@
+name: Setup and Greet
+description: Custom composite action
+inputs:
+  name:
+    required: true
+  language:
+    default: 'en'
+outputs:
+  greeted:
+    description: "Returns true"
+    value: 'true'
+runs:
+  using: "composite"
+  steps:
+    - name: Print Greeting
+      shell: bash
+      run: |
+        if [ "${{ inputs.language }}" = "es" ]; then
+          echo "¡Hola, ${{ inputs.name }}!"
+        else
+          echo "Hello, ${{ inputs.name }}!"
+        fi
+        
+    - name: Print System Info
+      shell: bash
+      run: |
+        echo "Current Date: $(date)"
+        echo "Runner OS: $RUNNER_OS"
+
