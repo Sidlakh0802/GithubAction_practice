@@ -1,0 +1,14 @@
+name: Call Build Workflow
+on:
+  push:
+    branches: [main]
+
+jobs:
+  execute-reusable-job:
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      app_name: "my-web-app"
+      environment: "production"
+    secrets:
+      docker_token: ${{ secrets.DOCKER_TOKEN }}
+
