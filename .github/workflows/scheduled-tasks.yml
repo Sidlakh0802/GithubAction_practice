@@ -1,0 +1,11 @@
+name: Scheduled Health Check
+on:
+  schedule:
+    - cron: '30 2 * * 1'
+  workflow_dispatch:
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -o /dev/null -s -w "%{http_code}\n" [https://github.com](https://github.com)
+
