@@ -1,0 +1,28 @@
+name: PR Quality Gate
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  file-size-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          LARGE_FILES=$(find . -type f -size +1M -not -path "./.git/*")
+          if [ -n "$LARGE_FILES" ]; then exit 1; fi
+
+  branch-name-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          BRANCH="${{ github.head_ref }}"
+          if [[ "$BRANCH" != feature/* && "$BRANCH" != fix/* && "$BRANCH" != docs/* ]]; then exit 1; fi
+
+  pr-body-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if [ -z "${{ github.event.pull_request.body }}" ]; then
+            echo "::warning::PR description is empty!"
+          fi
+
