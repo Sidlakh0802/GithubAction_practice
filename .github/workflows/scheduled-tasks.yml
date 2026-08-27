@@ -1,4 +1,4 @@
-iname: Scheduled Health Check
+name: Scheduled Health Check
 on:
   schedule:
     - cron: '30 2 * * 1'
