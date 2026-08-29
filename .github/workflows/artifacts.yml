@@ -1,29 +1,29 @@
 
-name: Artifacts Workflow
+# name: Artifacts Workflow
 
-on: [push]
+# on: [push]
 
-jobs:
-  job1-create-artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Generate a test report file
-        run: echo "Test results passed successfully." > report.txt
+# jobs:
+#   job1-create-artifact:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Generate a test report file
+#         run: echo "Test results passed successfully." > report.txt
         
-      - name: Upload the file to GitHub Storage
-        uses: actions/upload-artifact@v4
-        with:
-          name: my-test-report
-          path: report.txt
+#       - name: Upload the file to GitHub Storage
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: my-test-report
+#           path: report.txt
 
-  job2-read-artifact:
-    needs: job1-create-artifact
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download the file from GitHub Storage
-        uses: actions/download-artifact@v4
-        with:
-          name: my-test-report
+#   job2-read-artifact:
+#     needs: job1-create-artifact
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Download the file from GitHub Storage
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: my-test-report
           
-      - name: Read the contents
-        run: cat report.txt
+#       - name: Read the contents
+#         run: cat report.txt
