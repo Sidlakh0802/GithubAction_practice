@@ -1,14 +1,14 @@
-name: Run Tests
-on:
-  push:
-    branches: [main]
+# name: Run Tests
+# on:
+#   push:
+#     branches: [main]
 
-jobs:
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Simulate testing
-        run: |
-          echo "Running tests..."
-          sleep 10  # Pauses for 10 seconds so you can watch it happen!
-          echo "Tests passed!"
+# jobs:
+#   unit-tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Simulate testing
+#         run: |
+#           echo "Running tests..."
+#           sleep 10  # Pauses for 10 seconds so you can watch it happen!
+#           echo "Tests passed!"
