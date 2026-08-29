@@ -1,38 +1,38 @@
-name: Reusable Build Template
-on:
-  workflow_call:
-    inputs:
-      app_name:
-        required: true
-        type: string
-      environment:
-        required: true
-        type: string
-        default: "staging"
-    secrets:
-      docker_token:
-        required: true
-    outputs:
-      build_version:
-        description: "The generated version tag for the build"
-        value: ${{ jobs.build.outputs.version }}
+# name: Reusable Build Template
+# on:
+#   workflow_call:
+#     inputs:
+#       app_name:
+#         required: true
+#         type: string
+#       environment:
+#         required: true
+#         type: string
+#         default: "staging"
+#     secrets:
+#       docker_token:
+#         required: true
+#     outputs:
+#       build_version:
+#         description: "The generated version tag for the build"
+#         value: ${{ jobs.build.outputs.version }}
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version_step.outputs.version_tag }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     outputs:
+#       version: ${{ steps.version_step.outputs.version_tag }}
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
         
-      - name: Print Build Details
-        run: |
-          echo "Building ${{ inputs.app_name }} for${{ inputs.environment }}"
-          echo "Docker token is set: true"
+#       - name: Print Build Details
+#         run: |
+#           echo "Building ${{ inputs.app_name }} for${{ inputs.environment }}"
+#           echo "Docker token is set: true"
           
-      - name: Generate Version String
-        id: version_step
-        run: echo "version_tag=v1.0-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+#       - name: Generate Version String
+#         id: version_step
+#         run: echo "version_tag=v1.0-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
 
