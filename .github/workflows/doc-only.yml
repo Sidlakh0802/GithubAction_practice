@@ -1,12 +1,12 @@
-name: General Pipeline
-on:
-  push:
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
+# name: General Pipeline
+# on:
+#   push:
+#     paths-ignore:
+#       - '*.md'
+#       - 'docs/**'
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Running tests because non-documentation files were changed."
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Running tests because non-documentation files were changed."
