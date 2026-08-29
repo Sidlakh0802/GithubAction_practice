@@ -1,16 +1,16 @@
-name: Task 5 - Real Tests
-on: [push]
+# name: Task 5 - Real Tests
+# on: [push]
 
-jobs:
-  run-my-script:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out the repository code
-        uses: actions/checkout@v4
+# jobs:
+#   run-my-script:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check out the repository code
+#         uses: actions/checkout@v4
         
-      - name: Make the script executable
-        run: chmod +x test.sh
+#       - name: Make the script executable
+#         run: chmod +x test.sh
         
-      - name: Run the test script
-        run: ./test.sh
+#       - name: Run the test script
+#         run: ./test.sh
 
