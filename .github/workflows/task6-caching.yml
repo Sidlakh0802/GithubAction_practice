@@ -1,27 +1,27 @@
-name: Task 6 - Caching
-on: [push]
+# name: Task 6 - Caching
+# on: [push]
 
-jobs:
-  test-cache:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+# jobs:
+#   test-cache:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
       
-      - name: Cache the entire Python environment
-        id: cache-env # We gave this step an ID so we can check it later
-        uses: actions/cache@v4
-        with:
-          path: venv # We are caching the whole virtual environment folder
-          key: ${{ runner.os }}-venv-tensorflow
+#       - name: Cache the entire Python environment
+#         id: cache-env # We gave this step an ID so we can check it later
+#         uses: actions/cache@v4
+#         with:
+#           path: venv # We are caching the whole virtual environment folder
+#           key: ${{ runner.os }}-venv-tensorflow
           
-      - name: Create venv and Install (Only if no cache exists!)
-        if: steps.cache-env.outputs.cache-hit != 'true'
-        run: |
-          python -m venv venv
-          source venv/bin/activate
-          pip install tensorflow
+#       - name: Create venv and Install (Only if no cache exists!)
+#         if: steps.cache-env.outputs.cache-hit != 'true'
+#         run: |
+#           python -m venv venv
+#           source venv/bin/activate
+#           pip install tensorflow
           
-      - name: Run a test to prove it works
-        run: |
-          source venv/bin/activate
-          python -c "print('TensorFlow environment is ready!')"
+#       - name: Run a test to prove it works
+#         run: |
+#           source venv/bin/activate
+#           python -c "print('TensorFlow environment is ready!')"
