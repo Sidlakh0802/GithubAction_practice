@@ -1,30 +1,30 @@
-name: Smart Pipeline
-on: 
-  push:
-    branches:
-      - '**' # Triggers on push to ANY branch
+# name: Smart Pipeline
+# on: 
+#   push:
+#     branches:
+#       - '**' # Triggers on push to ANY branch
 
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Linting code..."
+# jobs:
+#   lint:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Linting code..."
       
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Testing code..."
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Testing code..."
       
-  summary:
-    needs: [lint, test]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Push Details
-        run: |
-          echo "Commit Message: ${{ github.event.commits[0].message }}"
-          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "This was a push to the MAIN branch."
-          else
-            echo "This was a push to a FEATURE branch."
-          fi
+#   summary:
+#     needs: [lint, test]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Print Push Details
+#         run: |
+#           echo "Commit Message: ${{ github.event.commits[0].message }}"
+#           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+#             echo "This was a push to the MAIN branch."
+#           else
+#             echo "This was a push to a FEATURE branch."
+#           fi
 
