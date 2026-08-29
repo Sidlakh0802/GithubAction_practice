@@ -1,51 +1,51 @@
-name: Data and Logic Explorer
-on: [push]
+# name: Data and Logic Explorer
+# on: [push]
 
-# TASK 2: Workflow Level Variable
-env:
-  APP_NAME: myapp 
+# # TASK 2: Workflow Level Variable
+# env:
+#   APP_NAME: myapp 
 
-jobs:
-  job-one-producer:
-    runs-on: ubuntu-latest
-    # TASK 2: Job Level Variable
-    env:
-      ENVIRONMENT: staging 
+# jobs:
+#   job-one-producer:
+#     runs-on: ubuntu-latest
+#     # TASK 2: Job Level Variable
+#     env:
+#       ENVIRONMENT: staging 
     
-    # TASK 3: Exposing the step output to the job level so other jobs can see it
-    outputs:
-      shared_date: ${{ steps.date_generator.outputs.date }}
+#     # TASK 3: Exposing the step output to the job level so other jobs can see it
+#     outputs:
+#       shared_date: ${{ steps.date_generator.outputs.date }}
       
-    steps:
-      - name: Print Variables (Task 2)
-        # TASK 2: Step Level Variable
-        env:
-          VERSION: 1.0.0 
-        run: |
-          echo "App: $APP_NAME, Env: $ENVIRONMENT, Ver:$VERSION"
-          echo "Triggered by actor: ${{ github.actor }}, Commit SHA:${{ github.sha }}"
+#     steps:
+#       - name: Print Variables (Task 2)
+#         # TASK 2: Step Level Variable
+#         env:
+#           VERSION: 1.0.0 
+#         run: |
+#           echo "App: $APP_NAME, Env: $ENVIRONMENT, Ver:$VERSION"
+#           echo "Triggered by actor: ${{ github.actor }}, Commit SHA:${{ github.sha }}"
           
-      - name: Set an Output (Task 3)
-        id: date_generator
-        run: echo "date=$(date)" >> $GITHUB_OUTPUT
+#       - name: Set an Output (Task 3)
+#         id: date_generator
+#         run: echo "date=$(date)" >> $GITHUB_OUTPUT
         
-      - name: Force a failure but continue (Task 4)
-        continue-on-error: true
-        run: exit 1
+#       - name: Force a failure but continue (Task 4)
+#         continue-on-error: true
+#         run: exit 1
 
-      - name: Run only if previous step failed (Task 4)
-        if: failure()
-        run: echo "The previous step failed, but we survived!"
+#       - name: Run only if previous step failed (Task 4)
+#         if: failure()
+#         run: echo "The previous step failed, but we survived!"
 
-  job-two-consumer:
-    needs: job-one-producer
-    runs-on: ubuntu-latest
-    steps:
-      - name: Read Output from Job One (Task 3)
-        run: echo "The date generated in the previous server was ${{ needs.job-one-producer.outputs.shared_date }}"
+#   job-two-consumer:
+#     needs: job-one-producer
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Read Output from Job One (Task 3)
+#         run: echo "The date generated in the previous server was ${{ needs.job-one-producer.outputs.shared_date }}"
       
-      - name: Run ONLY on main branch (Task 4)
-        if: github.ref == 'refs/heads/main'
-        run: echo "This only prints if we are on the main branch!"
+#       - name: Run ONLY on main branch (Task 4)
+#         if: github.ref == 'refs/heads/main'
+#         run: echo "This only prints if we are on the main branch!"
 
 
