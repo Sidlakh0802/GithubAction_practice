@@ -1,15 +1,15 @@
-name: Backend Code Trigger
-on:
-  push:
-    branches:
-      - main
-      - 'release/*'
-    paths:
-      - 'src/**'
-      - 'app/**'
+# name: Backend Code Trigger
+# on:
+#   push:
+#     branches:
+#       - main
+#       - 'release/*'
+#     paths:
+#       - 'src/**'
+#       - 'app/**'
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Changes detected in src/ or app/ on a protected branch. Starting build!"
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: echo "Changes detected in src/ or app/ on a protected branch. Starting build!"
