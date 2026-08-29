@@ -1,19 +1,19 @@
-name: Deploy Application
-on:
-  workflow_run:
-    workflows: ["Run Tests"]
-    types: [completed]
+# name: Deploy Application
+# on:
+#   workflow_run:
+#     workflows: ["Run Tests"]
+#     types: [completed]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Test Result
-        if: github.event.workflow_run.conclusion != 'success'
-        run: |
-          echo "::error::Tests failed! Aborting deployment."
-          exit 1
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check Test Result
+#         if: github.event.workflow_run.conclusion != 'success'
+#         run: |
+#           echo "::error::Tests failed! Aborting deployment."
+#           exit 1
           
-      - name: Deploy
-        if: github.event.workflow_run.conclusion == 'success'
-        run: echo "Tests passed. Deploying application to production..."
+#       - name: Deploy
+#         if: github.event.workflow_run.conclusion == 'success'
+#         run: echo "Tests passed. Deploying application to production..."
