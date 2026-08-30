@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
 
+# Task 4: Lock down workflow permissions
+permissions:
+  contents: read
+
 jobs:
   call_build_test:
     uses: ./.github/workflows/reusable-build-test.yml
@@ -17,8 +21,21 @@ jobs:
       docker_username: ${{ secrets.DOCKER_USERNAME }}
       docker_token: ${{ secrets.DOCKER_TOKEN }}
 
-  deploy:
+  # Task 1: Trivy Vulnerability Scan
+  security_scan:
     needs: call_docker_build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Scan Docker Image for Vulnerabilities
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '${{ secrets.DOCKER_USERNAME }}/siddharth-portfolio:latest'
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
+
+  deploy:
+    needs: security_scan
     runs-on: ubuntu-latest
     environment: production
     steps:
