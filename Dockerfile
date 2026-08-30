@@ -1,12 +1,12 @@
 # STAGE 1: Builder
-FROM node:18.17.0-alpine3.18 AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm install && mkdir -p node_modules
 COPY . .
 
 # STAGE 2: Production
-FROM node:18.17.0-alpine3.18
+FROM node:20-alpine
 WORKDIR /app
 RUN addgroup -S nodeapp && adduser -S nodeapp -G nodeapp \
     && chown -R nodeapp:nodeapp /app
