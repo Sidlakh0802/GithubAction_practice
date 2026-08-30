@@ -22,5 +22,4 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - run: echo "Deploying image: ${{ needs.call-docker-build.outputs.image_url }} to production"
-
+      - run: echo "Deploying image: ${{ needs['call-docker-build'].outputs.image_url }} to production"
