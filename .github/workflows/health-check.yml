@@ -1,0 +1,30 @@
+name: Scheduled Health Check
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: docker pull ${{ secrets.DOCKER_USERNAME }}/siddharth-portfolio:latest
+      
+      - run: docker run -d -p 3000:3000 --name myapp ${{ secrets.DOCKER_USERNAME }}/siddharth-portfolio:latest
+      
+      - run: sleep 5
+      
+      - run: |
+          if curl -s http://localhost:3000/ > /dev/null; then
+            echo "Health check passed"
+            echo "## Health Check Report" >> $GITHUB_STEP_SUMMARY
+            echo "- Image: myapp:latest" >> $GITHUB_STEP_SUMMARY
+            echo "- Status: PASSED" >> $GITHUB_STEP_SUMMARY
+            echo "- Time: $(date)" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Health check failed"
+            exit 1
+          fi
+          
+      - run: docker stop myapp && docker rm myapp
+

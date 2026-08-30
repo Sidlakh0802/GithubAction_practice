@@ -1,0 +1,26 @@
+name: Main Pipeline
+on:
+  push:
+    branches: [main]
+
+jobs:
+  call-build-test:
+    uses: ./.github/workflows/reusable-build-test.yml
+
+  call-docker-build:
+    needs: call-build-test
+    uses: ./.github/workflows/reusable-docker.yml
+    with:
+      image_name: ${{ secrets.DOCKER_USERNAME }}/siddharth-portfolio
+      tag: latest
+    secrets:
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_token: ${{ secrets.DOCKER_TOKEN }}
+
+  deploy:
+    needs: call-docker-build
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo "Deploying image: ${{ needs.call-docker-build.outputs.image_url }} to production"
+
