@@ -1,11 +1,11 @@
-{
-  "name": "siddharth-lakhani-portfolio",
-  "version": "1.0.0",
-  "description": "Interactive DevOps & Cloud Portfolio for Siddharth Lakhani",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-     "test": "node -c server.js"
-  },
-  "dependencies": {}
+{ 
+  "name": "siddharth-lakhani-portfolio", 
+  "version": "1.0.0", 
+  "description": "Interactive DevOps & Cloud Portfolio for Siddharth Lakhani", 
+  "main": "server.js", 
+  "scripts": { 
+    "start": "node server.js",
+    "test": "node -c server.js"
+  }, 
+  "dependencies": {} 
 }
