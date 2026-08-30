@@ -11,7 +11,7 @@ jobs:
     needs: call_build_test
     uses: ./.github/workflows/reusable-docker.yml
     with:
-      image_name: ${{ secrets.DOCKER_USERNAME }}/siddharth-portfolio
+      image_name: sid0802/siddharth-portfolio
       tag: latest
     secrets:
       docker_username: ${{ secrets.DOCKER_USERNAME }}
