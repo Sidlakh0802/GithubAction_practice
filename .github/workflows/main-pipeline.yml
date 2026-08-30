@@ -4,11 +4,11 @@ on:
     branches: [main]
 
 jobs:
-  call-build-test:
+  call_build_test:
     uses: ./.github/workflows/reusable-build-test.yml
 
-  call-docker-build:
-    needs: call-build-test
+  call_docker_build:
+    needs: call_build_test
     uses: ./.github/workflows/reusable-docker.yml
     with:
       image_name: ${{ secrets.DOCKER_USERNAME }}/siddharth-portfolio
@@ -18,8 +18,8 @@ jobs:
       docker_token: ${{ secrets.DOCKER_TOKEN }}
 
   deploy:
-    needs: call-docker-build
+    needs: call_docker_build
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - run: echo "Deploying image: ${{ needs['call-docker-build'].outputs.image_url }} to production"
+      - run: echo "Deploying image ${{ needs.call_docker_build.outputs.image_url }} to production"
